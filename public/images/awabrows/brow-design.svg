@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1200" role="img" aria-label="Outils brow design AWABROWS">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#efe4d8"/>
+      <stop offset="0.58" stop-color="#c7aa98"/>
+      <stop offset="1" stop-color="#5c5049"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="1200" fill="url(#bg)"/>
+  <g opacity="0.16" fill="#fffdf9">
+    <circle cx="160" cy="180" r="120"/>
+    <circle cx="760" cy="1040" r="180"/>
+  </g>
+  <g fill="none" stroke="#2d2724" stroke-linecap="round" opacity="0.48">
+    <path d="M214 820 680 354" stroke-width="18"/>
+    <path d="M640 315l83-83" stroke-width="10"/>
+    <path d="M176 780l-56 118" stroke-width="10"/>
+    <path d="M306 860c102-138 271-176 410-82" stroke-width="28"/>
+    <path d="M332 866c88-72 209-88 320-30" stroke-width="10"/>
+  </g>
+  <g stroke="#fffdf9" stroke-width="2" opacity="0.22">
+    <path d="M80 240h740M80 480h740M80 720h740M80 960h740"/>
+  </g>
+</svg>

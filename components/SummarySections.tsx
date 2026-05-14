@@ -1,16 +1,14 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { AnimeImage } from "@/components/AnimeImage";
-import type { Anime } from "@/lib/anime";
+import { AwabrowsImage } from "@/components/AwabrowsImage";
+import type { AwabrowsFeature } from "@/lib/awabrows";
 
 type SummarySectionsProps = {
-  anime: Anime[];
+  features: AwabrowsFeature[];
 };
 
-export function SummarySections({ anime }: SummarySectionsProps) {
+export function SummarySections({ features }: SummarySectionsProps) {
   const rootRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -20,6 +18,9 @@ export function SummarySections({ anime }: SummarySectionsProps) {
       return;
     }
 
+    let cleanupAnimations: (() => void) | undefined;
+    let isCancelled = false;
+
     const reduceMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
@@ -28,53 +29,84 @@ export function SummarySections({ anime }: SummarySectionsProps) {
       return;
     }
 
-    gsap.registerPlugin(ScrollTrigger);
+    const setupAnimations = async () => {
+      const [{ gsap }, { ScrollTrigger }] = await Promise.all([
+        import("gsap"),
+        import("gsap/ScrollTrigger"),
+      ]);
 
-    const ctx = gsap.context(() => {
-      gsap.utils.toArray<HTMLElement>(".summary-section").forEach((section) => {
-        gsap.fromTo(
-          section.querySelector(".summary-image"),
-          { autoAlpha: 0, y: 90, scale: 0.94, filter: "blur(18px)" },
-          {
-            autoAlpha: 1,
-            y: 0,
-            scale: 1,
-            filter: "blur(0px)",
-            duration: 1,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: section,
-              start: "top 72%",
-              end: "top 28%",
-              scrub: 0.8,
-            },
-          },
-        );
+      if (isCancelled) {
+        return;
+      }
 
-        gsap.fromTo(
-          section.querySelector(".summary-copy"),
-          { autoAlpha: 0, y: 64 },
-          {
-            autoAlpha: 1,
-            y: 0,
-            duration: 0.8,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: section,
-              start: "top 66%",
-              toggleActions: "play none none reverse",
-            },
-          },
-        );
-      });
-    }, root);
+      gsap.registerPlugin(ScrollTrigger);
 
-    return () => ctx.revert();
+      const ctx = gsap.context(() => {
+        gsap.utils
+          .toArray<HTMLElement>(".summary-section")
+          .forEach((section) => {
+            gsap.fromTo(
+              section.querySelector(".summary-image"),
+              { autoAlpha: 0, y: 90, scale: 0.94, filter: "blur(18px)" },
+              {
+                autoAlpha: 1,
+                y: 0,
+                scale: 1,
+                filter: "blur(0px)",
+                duration: 1,
+                ease: "power3.out",
+                scrollTrigger: {
+                  trigger: section,
+                  start: "top 72%",
+                  end: "top 28%",
+                  scrub: 0.8,
+                },
+              },
+            );
+
+            gsap.fromTo(
+              section.querySelector(".summary-copy"),
+              { autoAlpha: 0, y: 64 },
+              {
+                autoAlpha: 1,
+                y: 0,
+                duration: 0.8,
+                ease: "power3.out",
+                scrollTrigger: {
+                  trigger: section,
+                  start: "top 66%",
+                  toggleActions: "play none none reverse",
+                },
+              },
+            );
+          });
+      }, root);
+
+      cleanupAnimations = () => ctx.revert();
+    };
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          observer.disconnect();
+          void setupAnimations();
+        }
+      },
+      { rootMargin: "700px 0px" },
+    );
+
+    observer.observe(root);
+
+    return () => {
+      isCancelled = true;
+      observer.disconnect();
+      cleanupAnimations?.();
+    };
   }, []);
 
   return (
     <div ref={rootRef} className="bg-[#F7F4EF]">
-      {anime.map((item, index) => (
+      {features.map((item, index) => (
         <section
           key={item.slug}
           className="summary-section relative isolate flex min-h-screen items-center overflow-hidden px-6 py-24 sm:px-10 lg:px-12"
@@ -92,8 +124,8 @@ export function SummarySections({ anime }: SummarySectionsProps) {
               }`}
               style={{ boxShadow: `0 34px 110px ${item.glow}` }}
             >
-              <AnimeImage
-                anime={item}
+              <AwabrowsImage
+                feature={item}
                 sizes="(min-width: 1024px) 42vw, 92vw"
               />
               <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_42%,rgba(45,39,36,0.48))]" />
@@ -101,7 +133,7 @@ export function SummarySections({ anime }: SummarySectionsProps) {
 
             <div className="summary-copy">
               <p className="mb-5 text-xs font-semibold uppercase tracking-[0.42em] text-[#7A6A5E]">
-                Dossier archive 0{index + 1}
+                Savoir-faire 0{index + 1}
               </p>
               <h2 className="text-5xl font-black uppercase leading-[0.9] text-[#2D2724] sm:text-7xl lg:text-8xl">
                 {item.title}

@@ -1,5 +1,5 @@
-import { AnimeLandingPage } from "@/components/AnimeLandingPage";
+import { AwabrowsLandingPage } from "@/components/AwabrowsLandingPage";
 
 export default function Home() {
-  return <AnimeLandingPage />;
+  return <AwabrowsLandingPage />;
 }

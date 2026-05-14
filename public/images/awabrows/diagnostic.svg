@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1200" role="img" aria-label="Texture studio AWABROWS">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f7f4ef"/>
+      <stop offset="0.52" stop-color="#d9c8b4"/>
+      <stop offset="1" stop-color="#8d7464"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="52%" cy="42%" r="46%">
+      <stop offset="0" stop-color="#fffdf9" stop-opacity="0.88"/>
+      <stop offset="1" stop-color="#fffdf9" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="900" height="1200" fill="url(#bg)"/>
+  <rect width="900" height="1200" fill="url(#glow)"/>
+  <g opacity="0.18" stroke="#3f332d" stroke-width="2">
+    <path d="M120 170h660M120 290h660M120 410h660M120 530h660M120 650h660M120 770h660M120 890h660"/>
+    <path d="M180 120v960M300 120v960M420 120v960M540 120v960M660 120v960"/>
+  </g>
+  <g fill="none" stroke="#2d2724" stroke-linecap="round">
+    <path d="M210 626c145-170 330-184 485-44" stroke-width="34" opacity="0.34"/>
+    <path d="M250 632c118-108 265-116 405-31" stroke-width="13" opacity="0.42"/>
+  </g>
+  <circle cx="690" cy="250" r="95" fill="#fffdf9" opacity="0.28"/>
+  <circle cx="205" cy="955" r="125" fill="#b58c78" opacity="0.24"/>
+</svg>

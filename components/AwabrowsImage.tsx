@@ -1,23 +1,23 @@
 import Image from "next/image";
-import type { Anime } from "@/lib/anime";
+import type { AwabrowsFeature } from "@/lib/awabrows";
 
-type AnimeImageProps = {
-  anime: Anime;
+type AwabrowsImageProps = {
+  feature: AwabrowsFeature;
   className?: string;
   priority?: boolean;
   sizes?: string;
 };
 
-export function AnimeImage({
-  anime,
+export function AwabrowsImage({
+  feature,
   className = "",
   priority = false,
   sizes = "(min-width: 1024px) 35vw, 85vw",
-}: AnimeImageProps) {
+}: AwabrowsImageProps) {
   return (
     <Image
-      src={anime.image}
-      alt={`Illustration anime ${anime.title}`}
+      src={feature.image}
+      alt={`Prestation AWABROWS ${feature.title}`}
       fill
       priority={priority}
       sizes={sizes}

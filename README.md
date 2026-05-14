@@ -1,6 +1,4 @@
-# Aishah Anime
-
-Minimal Next.js setup for future landing page development.
+# AWABROWS
 
 ## Commands
 

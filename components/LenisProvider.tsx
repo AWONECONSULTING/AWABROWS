@@ -1,6 +1,5 @@
 "use client";
 
-import Lenis from "lenis";
 import { type ReactNode, useEffect } from "react";
 
 type LenisProviderProps = {
@@ -9,6 +8,9 @@ type LenisProviderProps = {
 
 export function LenisProvider({ children }: LenisProviderProps) {
   useEffect(() => {
+    let cleanup: (() => void) | undefined;
+    let isCancelled = false;
+
     const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
@@ -17,24 +19,53 @@ export function LenisProvider({ children }: LenisProviderProps) {
       return;
     }
 
-    const lenis = new Lenis({
-      duration: 1.15,
-      smoothWheel: true,
-      wheelMultiplier: 0.9,
-    });
+    const startLenis = async () => {
+      const { default: Lenis } = await import("lenis");
 
-    let frameId = 0;
+      if (isCancelled) {
+        return;
+      }
 
-    const raf = (time: number) => {
-      lenis.raf(time);
+      const lenis = new Lenis({
+        duration: 1.05,
+        smoothWheel: true,
+        wheelMultiplier: 0.92,
+      });
+
+      let frameId = 0;
+
+      const raf = (time: number) => {
+        lenis.raf(time);
+        frameId = requestAnimationFrame(raf);
+      };
+
       frameId = requestAnimationFrame(raf);
+
+      cleanup = () => {
+        cancelAnimationFrame(frameId);
+        lenis.destroy();
+      };
     };
 
-    frameId = requestAnimationFrame(raf);
+    const hasIdleCallback = Boolean(window.requestIdleCallback);
+    const idleId = hasIdleCallback
+      ? window.requestIdleCallback(() => {
+          void startLenis();
+        })
+      : window.setTimeout(() => {
+          void startLenis();
+        }, 250);
 
     return () => {
-      cancelAnimationFrame(frameId);
-      lenis.destroy();
+      isCancelled = true;
+
+      if (hasIdleCallback) {
+        window.cancelIdleCallback(idleId);
+      } else {
+        window.clearTimeout(idleId);
+      }
+
+      cleanup?.();
     };
   }, []);
 

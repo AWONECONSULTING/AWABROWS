@@ -8,8 +8,9 @@ const geist = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "Archives Anime",
-  description: "Cinq mondes. Cinq histoires. Un scroll cinématographique.",
+  title: "AWABROWS",
+  description:
+    "Studio sourcils specialise en diagnostic, brow design, brow lift et shading.",
 };
 
 export default function RootLayout({
@@ -19,7 +20,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
-      <body className={geist.className}>{children}</body>
+      <body className={geist.className} suppressHydrationWarning>
+        {children}
+      </body>
     </html>
   );
 }

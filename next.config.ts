@@ -6,12 +6,12 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "myanimelist.net",
-        pathname: "/images/anime/**",
+        hostname: "customer-gqe1q7ccjb.cloudflarestream.com",
+        pathname: "/**",
       },
       {
         protocol: "https",
-        hostname: "**.alphacoders.com",
+        hostname: "videodelivery.net",
         pathname: "/**",
       },
     ],

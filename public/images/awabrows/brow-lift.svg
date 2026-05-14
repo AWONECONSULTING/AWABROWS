@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1200" role="img" aria-label="Texture brow lift AWABROWS">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#6e5f55"/>
+      <stop offset="0.52" stop-color="#d8ccbd"/>
+      <stop offset="1" stop-color="#fffdf9"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="1200" fill="url(#bg)"/>
+  <g fill="none" stroke-linecap="round">
+    <path d="M120 810c110-98 224-138 356-138 120 0 226 32 310 96" stroke="#2d2724" stroke-width="34" opacity="0.36"/>
+    <path d="M160 795c105-58 208-84 318-82 103 2 193 26 266 71" stroke="#fffdf9" stroke-width="11" opacity="0.52"/>
+  </g>
+  <g opacity="0.22" stroke="#2d2724" stroke-width="7" stroke-linecap="round">
+    <path d="M230 284c26 90 25 180-4 270"/>
+    <path d="M342 230c36 120 37 240 2 360"/>
+    <path d="M454 205c29 132 28 264-1 396"/>
+    <path d="M566 238c33 111 34 224 2 338"/>
+    <path d="M678 300c24 86 24 173-2 260"/>
+  </g>
+</svg>

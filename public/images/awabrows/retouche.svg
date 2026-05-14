@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1200" role="img" aria-label="Retouche AWABROWS sans visage">
+  <defs>
+    <linearGradient id="bg" x1="1" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fffdf9"/>
+      <stop offset="0.5" stop-color="#e0d6c5"/>
+      <stop offset="1" stop-color="#8a786c"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="1200" fill="url(#bg)"/>
+  <g opacity="0.18" fill="#2d2724">
+    <rect x="150" y="180" width="600" height="840" rx="34"/>
+    <rect x="198" y="234" width="504" height="732" rx="22" fill="#fffdf9"/>
+  </g>
+  <g fill="none" stroke="#2d2724" stroke-linecap="round">
+    <path d="M245 610c138-112 284-126 440-36" stroke-width="30" opacity="0.35"/>
+    <path d="M278 610c114-60 238-69 372-18" stroke-width="10" opacity="0.52"/>
+    <path d="M250 780h398" stroke-width="12" opacity="0.24"/>
+    <path d="M250 845h300" stroke-width="12" opacity="0.2"/>
+  </g>
+  <circle cx="680" cy="300" r="62" fill="#b58c78" opacity="0.28"/>
+</svg>

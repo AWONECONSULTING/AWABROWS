@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1200" role="img" aria-label="Poudrage shading AWABROWS">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fffdf9"/>
+      <stop offset="0.45" stop-color="#dbc5b7"/>
+      <stop offset="1" stop-color="#7a6155"/>
+    </linearGradient>
+    <filter id="blur">
+      <feGaussianBlur stdDeviation="42"/>
+    </filter>
+  </defs>
+  <rect width="900" height="1200" fill="url(#bg)"/>
+  <g filter="url(#blur)" opacity="0.44">
+    <circle cx="250" cy="380" r="170" fill="#c9a18f"/>
+    <circle cx="610" cy="750" r="230" fill="#2d2724"/>
+    <circle cx="720" cy="250" r="145" fill="#fffdf9"/>
+  </g>
+  <g fill="none" stroke="#2d2724" stroke-linecap="round">
+    <path d="M178 650c122-116 324-152 544-30" stroke-width="30" opacity="0.34"/>
+    <path d="M224 650c122-66 278-77 442-18" stroke-width="10" opacity="0.52"/>
+  </g>
+  <g fill="#fffdf9" opacity="0.3">
+    <circle cx="188" cy="220" r="8"/>
+    <circle cx="250" cy="270" r="5"/>
+    <circle cx="690" cy="410" r="7"/>
+    <circle cx="575" cy="960" r="6"/>
+    <circle cx="720" cy="880" r="9"/>
+  </g>
+</svg>
