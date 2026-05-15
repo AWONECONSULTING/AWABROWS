@@ -2,7 +2,6 @@
 
 import { useCallback, useState } from "react";
 import { testimonials } from "@/data/testimonials";
-import type { Testimonial } from "@/data/testimonials";
 import { TestimonialVideoCard } from "@/components/testimonials/testimonial-video-card";
 import { TestimonialVideoModal } from "@/components/testimonials/testimonial-video-modal";
 
@@ -15,11 +14,10 @@ const cardPlacements = [
 ];
 
 export function TestimonialsVideoSection() {
-  const [activeTestimonial, setActiveTestimonial] =
-    useState<Testimonial | null>(null);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   const closeModal = useCallback(() => {
-    setActiveTestimonial(null);
+    setActiveIndex(null);
   }, []);
 
   return (
@@ -55,16 +53,18 @@ export function TestimonialsVideoSection() {
               key={testimonial.id}
               index={index}
               testimonial={testimonial}
-              onPlay={setActiveTestimonial}
+              onPlay={() => setActiveIndex(index)}
             />
           ))}
         </div>
       </div>
 
-      {activeTestimonial ? (
+      {activeIndex !== null ? (
         <TestimonialVideoModal
-          testimonial={activeTestimonial}
+          activeIndex={activeIndex}
           onClose={closeModal}
+          onActiveIndexChange={setActiveIndex}
+          testimonials={testimonials}
         />
       ) : null}
     </section>

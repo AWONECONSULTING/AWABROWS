@@ -16,10 +16,12 @@ const cloudflareStreamVideo = {
 export const testimonials: Testimonial[] = [
   {
     id: "ines",
-    poster: cloudflareStreamVideo.poster,
-    videoUrl: cloudflareStreamVideo.videoUrl,
-    firstName: "Ines",
-    quote: "Le resultat est naturel, net, exactement ce que je voulais.",
+    poster:
+      "https://customer-gqe1q7ccjbcoqpuu.cloudflarestream.com/7a2a8377739f6215c87df45a98e5e0de/thumbnails/thumbnail.jpg",
+    videoUrl:
+      "https://customer-gqe1q7ccjbcoqpuu.cloudflarestream.com/7a2a8377739f6215c87df45a98e5e0de/manifest/video.m3u8",
+    firstName: "Ophélie",
+    quote: "Du domaine pharmaceutique à l’esthétique, elle a créé sa nouvelle expertise beauté.",
   },
   {
     id: "sarah",
